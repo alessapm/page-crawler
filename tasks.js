@@ -34,5 +34,38 @@ const step1 = () => {
   });
 }
 
+//         Step2 builds on step1 to add the work title.
+const step2= () => {
+  let artistsAndTitles = [];
 
-step1();
+  crawlArr1.forEach((urlEnding) => {
+    let pageToCrawl = `https://alessapm.github.io/lot1/${urlEnding}`;
+
+    request(pageToCrawl, (err, res, body) => {
+      if(err) {
+        console.log("Error: ", err);
+      }
+     if(res.statusCode === 200) {
+       // Parse the document body using cheerio
+       let $ = cheerio.load(body);
+       let artist = $('h2').text();
+       let title = $('h3').text();
+       let obj = {
+        artist: artist,
+        works: title
+       };
+       artistsAndTitles.push(obj);
+       if (artistsAndTitles.length === crawlArr1.length){
+        console.log('arr: ', JSON.stringify(artistsAndTitles));
+        return JSON.stringify(artistsAndTitles);
+       }
+     }
+
+    })
+
+  });
+}
+
+
+// step1();
+step2();
