@@ -9,4 +9,4 @@ This is a simple HTML page crawler to extract information from art listings.
 
 ## Set Up
 
-Please clone repository and run npm install. 
+Please clone repository and run npm install to set up. Run tasks.js
