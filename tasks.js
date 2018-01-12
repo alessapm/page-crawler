@@ -66,6 +66,7 @@ const step2 = () => {
   });
 }
 
+// step3 adds prices to work obj.
 const step3 = () => {
     let artistsWithPrices = [];
 
